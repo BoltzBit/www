@@ -7,7 +7,7 @@ import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import mapMarkerImg from '../images/Local.svg';
-import '../styles/pages/OrphanagesMap.css';
+import '../styles/pages/orphanages-map.css';
 
 const mapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
@@ -29,7 +29,7 @@ function OrphanagesMap(){
 
                 <footer>
                     <strong>Londrina</strong>
-                    <span>Santa Catarina</span>
+                    <span>SParaná</span>
                 </footer>
             </aside>
 
