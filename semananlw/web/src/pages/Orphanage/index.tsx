@@ -4,7 +4,9 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import Leaflet from 'leaflet';
 
-import mapMarkerImg from '../images/Local.svg';
+import mapMarkerImg from '../../images/Local.svg';
+
+import './styles.css';
 
 const happyMapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,

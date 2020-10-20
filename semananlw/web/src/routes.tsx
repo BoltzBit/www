@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Landing from './pages/Landing';
 import OrphanagesMap from './pages/OrphanagesMap';
-import Orphanage from './pages/Orphanage';
+import Orphanage from './pages/Orphanage/index';
 
 function Routes(){
     return(
