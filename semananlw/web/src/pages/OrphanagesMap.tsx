@@ -12,7 +12,7 @@ import '../styles/pages/orphanages-map.css';
 const mapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
     iconSize: [58, 68],
-    iconAncor: [29,68],
+    iconAnchor: [29,68],
     popupAnchor: [170, 10]
 });
 

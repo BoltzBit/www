@@ -1,13 +1,16 @@
 import React from 'react';
 import { FiClock, FiInfo } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import { Marker } from 'react-leaflet';
 import Leaflet from 'leaflet';
 
-import Sidebar from '../../components/Sidebar/Index';
+import Sidebar from '../../components/Sidebar/index';
 
 import mapMarkerImg from '../../images/Local.svg';
 
 import './styles.css';
+import PrimaryButton from '../../components/PrimaryButton';
+import Map from '../../components/Map';
 
 const happyMapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
@@ -56,7 +59,18 @@ function Orphanage(){
                         </p>
 
                         <div className="map-container">
-                            <p>Aqui é o map</p>
+                            <Map
+                                center = {[-23.321264,-51.2358034]}
+                                zoom = {15}
+                                style = {{ width: '100%', height: 280}}
+                            >
+
+                                <Marker 
+                                    interactive = {false}
+                                    icon = {happyMapIcon}
+                                    position = {[-23.321264,-51.2358034]}
+                                />
+                            </Map>
 
                             <footer>
                                 <a href="">Ver rotas no google Maps</a>
@@ -86,10 +100,10 @@ function Orphanage(){
                             </div>
                         </div>
 
-                        <button>
+                        <PrimaryButton type="button">
                             <FaWhatsapp size={20} color="#fff"/>
                             Entrar em contato
-                        </button>
+                        </PrimaryButton>
                     </div>
                 </div>
             </main>
