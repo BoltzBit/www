@@ -1,8 +1,9 @@
 import React from 'react';
-import { FiArrowLeft, FiClock, FiInfo } from 'react-icons/fi';
+import { FiClock, FiInfo } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
 import Leaflet from 'leaflet';
+
+import Sidebar from '../../components/Sidebar/Index';
 
 import mapMarkerImg from '../../images/Local.svg';
 
@@ -17,26 +18,17 @@ const happyMapIcon = Leaflet.icon({
 });
 
 function Orphanage(){
-    const { goBack } = useHistory();
-
     return (
         <div id="page-orphanage">
-            <aside className="sidebar">
-                <img src={mapMarkerImg} alt="Happy"/>
-
-                <footer>
-                    <button type="button" onClick={goBack}>
-                        <FiArrowLeft size={26} color="#fff"/>
-                    </button>
-                </footer>
-            </aside>
+            
+            <Sidebar />
 
             <main>
                 <div className="orphanage-details">
                     <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
 
                     <div className="images">
-                        <button>
+                        <button className="active">
                             <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
                         </button>
                         <button>
@@ -68,7 +60,7 @@ function Orphanage(){
 
                             <footer>
                                 <a href="">Ver rotas no google Maps</a>
-                            </footer>                            
+                            </footer>                         
                         </div>
 
                         <hr/>
