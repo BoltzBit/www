@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Landing from './pages/Landing';
-import OrphanagesMap from './pages/OrphanagesMap';
+import Landing from './pages/Landing/index';
+import OrphanagesMap from './pages/OrphanagesMap/index';
 import Orphanage from './pages/Orphanage/index';
 import CreateOrphanage from './pages/CreateOrphanage/index';
 

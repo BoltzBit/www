@@ -56,7 +56,7 @@ function CreateOrphanage(){
 
                         <div className="input-block">
                             <label htmlFor="instructions">Instruções</label>
-                            <input id="instructions"/>
+                            <textarea id="instructions"/>
                         </div>
 
                         <div className="input-block">
