@@ -89,14 +89,14 @@ function Orphanage(){
                         <div className="open-details">
                             <div className="hour">
                                 <FiInfo size={32} color="#15B6D6"/>
-                                Segunda à Sexta <br />
-                                8h às 18h
+                                <p>Segunda à Sexta <br />
+                                8h às 18h</p>
                             </div>
 
                             <div className="open-on-weekends">
                                 <FiClock size={32} color="#39CC83"/>
-                                Atendemos <br />
-                                fim de semana
+                                <p>Atendemos <br />
+                                fim de semana</p>
                             </div>
                         </div>
 

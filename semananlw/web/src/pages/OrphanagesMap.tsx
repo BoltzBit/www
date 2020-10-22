@@ -29,7 +29,7 @@ function OrphanagesMap(){
 
                 <footer>
                     <strong>Londrina</strong>
-                    <span>SParaná</span>
+                    <span>Paraná</span>
                 </footer>
             </aside>
 
@@ -53,7 +53,7 @@ function OrphanagesMap(){
                 </Marker>
             </Map>
 
-            <Link to="/orphanage" className="create-orphanage">
+            <Link to="/create" className="create-orphanage">
                 <FiPlus size={32} color="#fff"/>
             </Link>
         </div>
