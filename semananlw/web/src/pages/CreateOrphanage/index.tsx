@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {  useEffect } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { Marker } from 'react-leaflet';
 
@@ -11,6 +11,11 @@ import happyMapImg from '../../components/Map/happyMapImg'
 import './styles.css';
 
 function CreateOrphanage(){
+
+    useEffect(() => {
+        console.log("Teste deu certo");
+    }, []);
+
     return (
         <div id="page-create-orphanage">
             <Sidebar />
