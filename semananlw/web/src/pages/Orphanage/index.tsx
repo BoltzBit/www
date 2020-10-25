@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FiClock, FiInfo } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Marker } from 'react-leaflet';
@@ -12,6 +12,8 @@ import './styles.css';
 import PrimaryButton from '../../components/PrimaryButton';
 import Map from '../../components/Map';
 
+import api from '../../services/api';
+
 const happyMapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
 
@@ -21,6 +23,14 @@ const happyMapIcon = Leaflet.icon({
 });
 
 function Orphanage(){
+
+    useEffect(() => {
+        api.get('orphanages').then(response => {
+            console.log(response.data);
+        });
+    }, []);
+    
+    
     return (
         <div id="page-orphanage">
             

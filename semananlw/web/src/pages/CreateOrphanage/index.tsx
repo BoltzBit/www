@@ -11,11 +11,6 @@ import happyMapImg from '../../components/Map/happyMapImg'
 import './styles.css';
 
 function CreateOrphanage(){
-
-    useEffect(() => {
-        console.log("Teste deu certo");
-    }, []);
-
     return (
         <div id="page-create-orphanage">
             <Sidebar />
