@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react-router-dom": "^5.1.6",
     "cra-template-typescript": "1.0.3",
     "leaflet": "^1.7.1",
     "react": "^16.13.1",
@@ -38,5 +39,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {},
   "description": ""
 }

@@ -27,7 +27,7 @@ export default {
             relations: ['images']
         });
 
-        return response.json(orphanages_view.render(orphanage));
+        return response.status(200).json(orphanages_view.render(orphanage));
 
     },
 

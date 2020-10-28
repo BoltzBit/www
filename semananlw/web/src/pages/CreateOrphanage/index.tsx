@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react';
+import React from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { Marker } from 'react-leaflet';
 

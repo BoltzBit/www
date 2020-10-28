@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiClock, FiInfo } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Marker } from 'react-leaflet';
@@ -12,6 +12,7 @@ import './styles.css';
 import PrimaryButton from '../../components/PrimaryButton';
 import Map from '../../components/Map';
 
+import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
 const happyMapIcon = Leaflet.icon({
@@ -22,13 +23,33 @@ const happyMapIcon = Leaflet.icon({
     popupAnchor: [0, -60]
 });
 
+interface Orphanage{
+    id: number;
+    name: string;
+    latitude: number;
+    longitude: number;
+    about: string;
+    instructions: string;
+    opening_hours: string;
+    open_on_weekends: string;
+    images: Array<{
+        url: string;
+    }>;
+}
+
+interface OrphanageParams{
+    id: string;
+}
+
 function Orphanage(){
+    const params = useParams<OrphanageParams>();
+    const [ orphanage, setOrphanage ] = useState<Orphanage>();
 
     useEffect(() => {
-        api.get('orphanages').then(response => {
+        api.get(`orphanages/${params.id}`).then(response => {
             console.log(response.data);
         });
-    }, []);
+    }, [params.id]);
     
     
     return (
@@ -83,7 +104,7 @@ function Orphanage(){
                             </Map>
 
                             <footer>
-                                <a href="">Ver rotas no google Maps</a>
+                                <a href="#">Ver rotas no google Maps</a>
                             </footer>                         
                         </div>
 
