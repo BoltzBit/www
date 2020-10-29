@@ -33,6 +33,7 @@ interface Orphanage{
     opening_hours: string;
     open_on_weekends: string;
     images: Array<{
+        id: number;
         url: string;
     }>;
 }
@@ -44,13 +45,16 @@ interface OrphanageParams{
 function Orphanage(){
     const params = useParams<OrphanageParams>();
     const [ orphanage, setOrphanage ] = useState<Orphanage>();
+    const [activeIndexImg, setActiveIndexImg ] = useState(0);
 
     useEffect(() => {
         api.get(`orphanages/${params.id}`).then(response => {
-            console.log(response.data);
+            setOrphanage(response.data);
         });
     }, [params.id]);
     
+    if(!orphanage)
+        return (<h1>Carregando</h1>);
     
     return (
         <div id="page-orphanage">
@@ -59,39 +63,32 @@ function Orphanage(){
 
             <main>
                 <div className="orphanage-details">
-                    <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
+                    <img src={orphanage?.images[activeIndexImg].url} alt={orphanage?.name}/>
 
                     <div className="images">
-                        <button className="active">
-                            <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
-                        </button>
-                        <button>
-                            <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
-                        </button>
-                        <button>
-                            <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
-                        </button>
-                        <button>
-                            <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
-                        </button>
-                        <button>
-                            <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
-                        </button>
-                        <button>
-                            <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar da Alegria"/>
-                        </button>
+
+                        {orphanage?.images.map((image, index) => (
+                            <button 
+                                className={activeIndexImg === index ? 'active' : ''}
+                                type="button"
+                                key={image.id}
+                                onClick={() => { setActiveIndexImg(index)}}
+                            >
+                                <img src={image.url} alt={orphanage.name}/>
+                            </button>
+                        ))}
                     </div>
 
                     <div className="orphanage-details-content">
                         
-                        <h1>Lar da Alegria</h1>
+                        <h1>{orphanage?.name}</h1>
                         <p>
-                            Presta assistência a crianças de 06 a 15 anos que se encontre em situação de risco e/ou vulnerabilidade social.
+                            {orphanage?.about}
                         </p>
 
                         <div className="map-container">
                             <Map
-                                center = {[-23.321264,-51.2358034]}
+                                center = {[orphanage?.latitude,orphanage?.longitude]}
                                 zoom = {15}
                                 style = {{ width: '100%', height: 280}}
                             >
@@ -99,7 +96,7 @@ function Orphanage(){
                                 <Marker 
                                     interactive = {false}
                                     icon = {happyMapIcon}
-                                    position = {[-23.321264,-51.2358034]}
+                                    position = {[orphanage?.latitude,orphanage?.longitude]}
                                 />
                             </Map>
 
@@ -110,9 +107,9 @@ function Orphanage(){
 
                         <hr/>
 
-                        <h2>Instruções para visita</h2>
+                        <h2>{orphanage?.instructions}</h2>
                         <p>
-                        Venha como se sentir mais à vontade e traga muito amor para dar.
+                            Venha como se sentir mais à vontade e traga muito amor para dar.
                         </p>
 
                         <hr/>
@@ -120,15 +117,22 @@ function Orphanage(){
                         <div className="open-details">
                             <div className="hour">
                                 <FiInfo size={32} color="#15B6D6"/>
-                                <p>Segunda à Sexta <br />
-                                8h às 18h</p>
+                                <p>{orphanage.opening_hours}</p>
                             </div>
 
-                            <div className="open-on-weekends">
-                                <FiClock size={32} color="#39CC83"/>
-                                <p>Atendemos <br />
-                                fim de semana</p>
-                            </div>
+                            {orphanage?.open_on_weekends ? (
+                                <div className="open-on-weekends">
+                                    <FiClock size={32} color="#39CC83"/>
+                                    <p>Atendemos <br />
+                                    fim de semana</p>
+                                </div>
+                            ) : (
+                                <div className="open-on-weekends dont-open">
+                                    <FiClock size={32} color="#39CC83"/>
+                                    <p>Não Atendemos <br />
+                                    fim de semana</p>
+                                </div>
+                            )}
                         </div>
 
                         <PrimaryButton type="button">
